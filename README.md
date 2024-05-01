@@ -5,7 +5,7 @@ Welcome to the Task Automation Apps Repository! This repository contains a colle
 ## Apps
 
 
-### 1. [File Sorter](files-sorter.md) - Simplify file management by automatically sorting files into designated folders based on file type or specified criteria.
+### 1. [File Sorter](tasks/file-sorter/files-sorter.md) - Simplify file management by automatically sorting files into designated folders based on file type or specified criteria.
 
 
 
