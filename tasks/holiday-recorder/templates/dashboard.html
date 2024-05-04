@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="/static/css/styles.css" rel="stylesheet"> <!-- Link to your external stylesheet -->
+    
+    
+</head>
+<body>
+
+<div class="container mx-auto px-4 py-8">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="section">
+            <h2 class="section-heading">Current Holidays</h2>
+            <ul>
+                {% for holiday in holidays %}
+                    <li>{{ holiday.title }} - {{ holiday.date_from|strftime('%m/%d/%Y') }} to {{ holiday.date_to|strftime('%m/%d/%Y') }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="section">
+            <h2 class="section-heading">Total Allowed Holidays & Remaining</h2>
+            <p>Total Allowed Holidays: {{ total_allowed_holidays }}</p>
+            <p>Remaining Holidays: {{ remaining }}</p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+        <div class="section">
+            <h2 class="section-heading">Add Holiday</h2>
+            <form action="{{ url_for('add_holiday') }}" method="post" onsubmit="return validateForm()" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="title" class="block">Title:</label>
+                    <input type="text" id="title" name="title" class="form-input mt-1 block" placeholder="Enter title">
+                 </div>
+                 <div>
+                    <label for="date_from" class="block">Date From:</label>
+                    <input type="date" id="date_from" name="date_from" class="form-input mt-1 block">
+                 </div>
+                 <div>
+                    <label for="date_to" class="block">Date To:</label>
+                    <input type="date" id="date_to" name="date_to" class="form-input mt-1 block">
+                 </div>
+                 <div>
+                    <label for="reason" class="block">Reason:</label>
+                    <input type="text" id="reason" name="reason" class="form-input mt-1 block" placeholder="Enter reason">
+                 </div>
+                <button type="submit" class="btn md:col-span-2">Add Holiday</button>
+            </form>
+        </div>
+        <div class="section">
+            <h2 class="section-heading">Bank Holidays - {{ current_year }}</h2>
+            <table class="holiday-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day of the week</th>
+                        <th>Bank holiday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bank_holiday in bank_holidays %}
+                        <tr>
+                            <td class="font-semibold">{{ bank_holiday['Date'] }}</td>
+                            <td>{{ bank_holiday['Day of the week'] }}</td>
+                            <td>{{ bank_holiday['Bank holiday'] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<div class="user-info-container" id="userInfoContainer">
+    <div class="user-info">
+        <p>User: {{ current_user }}</p>
+        <hr>
+        <p><a href="{{ url_for('logout') }}">Logout</a></p>
+        <hr>
+        <p><a href="#" onclick="toggleAbout()">About</a></p>
+    </div>
+</div>
+
+<!-- User icon -->
+<div class="user-icon" onclick="toggleUserInfo()">
+    <i class="fas fa-user"></i>
+    <div class="user-info-container" id="userInfoContainer">
+        <div class="user-info">
+            <p>User: {{ current_user }}</p>
+            <hr>
+            <p><a href="{{ url_for('logout') }}">Logout</a></p>
+            <hr>
+            <p><a href="#" onclick="toggleAbout()">About</a></p>
+        </div>
+    </div>
+</div>
+
+<div id="aboutPopup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closeAboutPopup()">&times;</span>
+        <h2><b>About This App</b></h2>
+        <hr>
+        <p>Effortlessly manage your holidays with our intuitive Holiday Management App. Whether you're planning time off, tracking past breaks, or staying on top of remaining days, our user-friendly interface makes it a breeze. Seamlessly add holidays, specify durations, and jot down reasons with ease. Our app empowers you to optimize your time, ensuring you make the most of your well-deserved breaks. Say goodbye to holiday hassle and hello to efficient holiday management!</p>
+        <hr>
+    </div>
+</div>
+
+<script>
+    function validateForm() {
+        var title = document.getElementById('title').value;
+        var dateFrom = document.getElementById('date_from').value;
+        var dateTo = document.getElementById('date_to').value;
+        var reason = document.getElementById('reason').value;
+
+        if (!title || !dateFrom || !dateTo || !reason) {
+            alert('Please fill out all fields.');
+            return false;
+        }
+
+        return true;
+    }
+
+    function toggleUserInfo() {
+        var userInfoContainer = document.getElementById('userInfoContainer');
+        if (userInfoContainer.style.display === "block") {
+            userInfoContainer.style.display = "none";
+        } else {
+            userInfoContainer.style.display = "block";
+        }
+    }
+
+    function toggleAbout() {
+        var popup = document.getElementById('aboutPopup');
+        if (popup.style.display === 'block') {
+            popup.style.display = 'none';
+        } else {
+            popup.style.display = 'block';
+        }
+    }
+
+    function closeAboutPopup() {
+        var aboutPopup = document.getElementById('aboutPopup');
+        aboutPopup.style.display = "none";
+        window.location.href = "/dashboard"; // Redirect to dashboard
+    }
+</script>
+
+</body>
+</html>

@@ -13,3 +13,18 @@ __pycache__/
 
 # Ignore system-specific files
 .DS_Store
+
+./node_modules
+
+# Ignore any files in the "node_modules" directories
+node_modules/
+
+# Ignore any files in the "build" directories
+# Ignore any files in the "dist" directories
+
+# Ignore any files in the ".cache" directories
+./.cache
+
+# Ignore any files in the ".vscode" directories
+
+./.vs

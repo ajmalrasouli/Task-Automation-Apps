@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Holiday</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto">
+        <h1 class="mt-5 text-2xl font-bold">Edit Holiday</h1>
+        <form action="{{ url_for('edit_holiday', holiday_id=holiday.id) }}" method="post" class="mt-4 p-4 bg-white rounded-md shadow-md">
+            <div class="mb-4">
+                <label for="title" class="block text-gray-700">Title:</label>
+                <input type="text" id="title" name="title" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500" value="{{ holiday.title }}">
+            </div>
+            <div class="mb-4">
+                <label for="date_from" class="block text-gray-700">Date From:</label>
+                <input type="date" id="date_from" name="date_from" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500" value="{{ holiday.date_from }}">
+            </div>
+            <div class="mb-4">
+                <label for="date_to" class="block text-gray-700">Date To:</label>
+                <input type="date" id="date_to" name="date_to" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500" value="{{ holiday.date_to }}">
+            </div>
+            <div class="mb-4">
+                <label for="reason" class="block text-gray-700">Reason:</label>
+                <input type="text" id="reason" name="reason" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500" value="{{ holiday.reason }}">
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Update Holiday</button>
+        </form>
+    </div>
+</body>
+</html>
