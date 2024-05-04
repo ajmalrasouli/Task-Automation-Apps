@@ -6,7 +6,10 @@ Welcome to the Task Automation Apps Repository! This repository contains a colle
 
 - [File Sorter](tasks/file-sorter/files-sorter.md): Simplify file management by automatically sorting files into designated folders based on file type or specified criteria.
 - [LoginLogoutTracker](https://github.com/ajmalrasouli/Task-Automation-Apps/blob/main/tasks/LogTracker/logtracker.md): A Python application for recording user login and logout times, generating reports, and exporting them to Excel.
+<<<<<<< HEAD
 - [Holiday-recorder](https://github.com/ajmalrasouli/Task-Automation-Apps/blob/main/tasks/holiday-recorder/holiday.md)
+=======
+>>>>>>> f4e7b2fd676dd7528857fee94208e80d388c58ee
 
 ## 📖 How to Use
 
