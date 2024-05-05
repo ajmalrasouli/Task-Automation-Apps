@@ -105,9 +105,8 @@ The application will be accessible at `http://localhost:5000` in your web browse
   - Users can edit or delete their recorded holidays from the dashboard.
 
 ## Screenshots
-<img src="/images/register.png">
-![Screenshot 2](/images/login.png)
-![Screenshot 2](/images/Dashboard.png)
+<img src="/images/register.png" width="400" height="400"> <img src="/images/login.png" width="400" height="400">
+<img src="/images/Dashboard.png">
 
 ## Contributing
 
