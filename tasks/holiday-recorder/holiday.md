@@ -6,6 +6,7 @@ Holiday Recorder is a Flask web application for managing holidays. It allows use
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Screenshot](#screenshots)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -38,6 +39,7 @@ Holiday Recorder is a Flask web application for managing holidays. It allows use
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Screenshots](#screenshots)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -101,6 +103,11 @@ The application will be accessible at `http://localhost:5000` in your web browse
 
 - **Edit/Delete Holidays:**
   - Users can edit or delete their recorded holidays from the dashboard.
+
+## Screenshots
+<img src="/images/register.png">
+![Screenshot 2](/images/login.png)
+![Screenshot 2](/images/Dashboard.png)
 
 ## Contributing
 
